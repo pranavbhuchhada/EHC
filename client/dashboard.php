@@ -22,6 +22,17 @@
 </head>
 
 <?php require("header.php")?>
+<?php require("../config/connection.php")?>
+<?php 
+if (!isset($_REQUEST['username']) || $_REQUEST['username'] == "") {
+    ?>
+    <script type="text/javascript">
+        window.location.href = "../index.php"
+    </script>
+    <?php 
+    exit();   
+}
+ ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -45,13 +56,12 @@
                 <div class="col-lg-6">
                 <p>DOB : 11 - 09 - 1999 </p>
                 <p>Age : 26 </p>
-                <p>Sex : Twice a day. </p>
+                <p>Sex : Male. </p>
                 <p>Blood Group : A+ </p>
                 <p>Contact : +91 9876543210 </p>
                 <p>Emergency Contact : +91 9876543210 </p>
                 <p>Address :  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
                 </div>
-                <!-- <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a> -->
             </div>
             </div>
         </div>
