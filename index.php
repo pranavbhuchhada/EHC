@@ -1,3 +1,17 @@
+<?php 
+session_start();  
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+  unset($_SESSION['loggedin']);
+  unset($_SESSION['username']);
+  unset($_SESSION['role']);
+  session_destroy();
+  ?>
+  <script type="text/javascript">
+    alert("Logging Out!!");
+  </script>
+  <?php 
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +23,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>EHC - Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -53,13 +67,6 @@
                       </div>
                     </div>
                     <input type="submit" name="submit" value="Log In" class="btn btn-primary btn-user btn-block">
-                    <hr>
-                    <a href="javascript:void(0);" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login with Google
-                    </a>
-                    <a href="javascript:void(0);" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                    </a>
                   </form>
                   <hr>
                   <div class="text-center">

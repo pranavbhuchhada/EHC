@@ -1,3 +1,5 @@
 <?php 
-header("Location: dashboard.php?username=".$_REQUEST["username"]); 
+session_start();
+header("Location: dashboard.php"); 
+exit;
 ?>
