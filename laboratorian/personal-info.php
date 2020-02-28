@@ -20,8 +20,8 @@
   <link href="css/mycustom.css" rel="stylesheet">
 
 </head>
-<?php require("header.php")?>
 <?php require("../config/connection.php")?>
+<?php require("header.php")?>
 <?php 
 if (isset($_SESSION['cusername'])) {
     $username = $_SESSION['cusername'];

@@ -21,54 +21,45 @@
   <link href="css/mycustom.css" rel="stylesheet">
 
 </head>
-
-<?php require("header.php")?>
 <?php require("../config/connection.php")?>
+<?php require("header.php")?>
 <?php 
 if (isset($_SESSION['cusername'])) {
   $username = $_SESSION['cusername'];
-  $result = mysqli_query($conn,"SELECT * FROM `userinfo` WHERE `username` = '".$username."'");
-  if ($row=mysqli_fetch_array($result)) {
-      $fname = $row[0];
-      $mname = $row[1];
-      $lname = $row[2];
-      $DOB = $row[3];
-      $mstatus = $row[4];
-      $sex = $row[5];
-      $bg = $row[6];
-      $mnum = $row[7];
-      $enum = $row[10];
-      $add = $row[11].",".$row[12].",".$row[13].",".$row[14];
-  }else{?>
-    <script type="text/javascript">
-      window.location.href = "../index.php";
-    </script>
-  <?php 
-    exit();
-  }
 }else{
   $username = $_SESSION['username'];
-  $result = mysqli_query($conn,"SELECT * FROM `userinfo` WHERE `username` = '".$username."'");
-  if ($row=mysqli_fetch_array($result)) {
-      $fname = $row[0];
-      $mname = $row[1];
-      $lname = $row[2];
-      $DOB = $row[3];
-      $mstatus = $row[4];
-      $sex = $row[5];
-      $bg = $row[6];
-      $mnum = $row[7];
-      $enum = $row[10];
-      $add = $row[11].",".$row[12].",".$row[13].",".$row[14];
-  }else{?>
-    <script type="text/javascript">
-      window.location.href = "../index.php";
-    </script>
-  <?php 
-    exit();
-  }
 }
-
+$result = mysqli_query($conn,"SELECT * FROM `userinfo` WHERE `username` = '".$username."'");
+if ($row=mysqli_fetch_array($result)) {
+    $fname = $row[0];
+    $mname = $row[1];
+    $lname = $row[2];
+    $DOB = $row[3];
+    $mstatus = $row[4];
+    $sex = $row[5];
+    $bg = $row[6];
+    $mnum = $row[7];
+    $enum = $row[10];
+    $add = $row[11].",".$row[12].",".$row[13].",".$row[14];
+}else{?>
+  <script type="text/javascript">
+    window.location.href = "../index.php";
+  </script>
+<?php 
+  exit();
+}
+$result = mysqli_query($conn,"SELECT `kal`,`psh` FROM `dashboard` WHERE `username` = '".$username."'");
+if ($row=mysqli_fetch_array($result)) {
+    $psh = $row[1];
+    $kal = $row[0];
+}else{
+    ?>
+    <script type="text/javascript">
+        window.location.href = "../index.php";
+    </script>
+    <?php 
+    exit()  ;
+}
  ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -88,7 +79,7 @@ if (isset($_SESSION['cusername'])) {
             </div>
             <div class="card-body row">
                 <div class="text-center col-lg-6">
-                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="https://media.istockphoto.com/vectors/user-icon-white-silhouette-on-blue-round-background-vector-id1003393752?k=6&m=1003393752&s=170667a&w=0&h=tHxs8MigTmRinLWCbU75QmSdVEZg1-2wZeH4tiPP-LQ=" alt="Client Image">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="../user_pp/<?php echo $username.'.jpg' ?>" alt="Client Image">
             </div>
                 <div class="col-lg-6">
                 <p>DOB : <?php echo "$DOB"; ?> </p>

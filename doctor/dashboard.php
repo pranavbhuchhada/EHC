@@ -111,7 +111,7 @@ if ($row=mysqli_fetch_array($result)) {
                     <h6 class="m-0 font-weight-bold text-primary">Past medical History</h6>
                 </div>
                 <div class="card-body dash-card">
-                    <p><?php echo "$pmh"; ?></p>
+                    <textarea id="pmh" onblur="saveData(this)" style="width: 100%;height: 100%;"><?php echo "$pmh"; ?></textarea>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@ if ($row=mysqli_fetch_array($result)) {
                 <h6 class="m-0 font-weight-bold text-primary">Family History</h6>
             </div>
             <div class="card-body dash-card">
-                <p><?php echo $fh; ?></p>
+                <textarea id="fh" onblur="saveData(this)" style="width: 100%;height: 100%;"><?php echo "$fh"; ?></textarea>
             </div>
             </div>
         </div>
@@ -133,7 +133,7 @@ if ($row=mysqli_fetch_array($result)) {
                 <h6 class="m-0 font-weight-bold text-primary">Past surgical History</h6>
             </div>
             <div class="card-body dash-card">
-                <p><?php echo $psh; ?></p>
+                <textarea id="psh" onblur="saveData(this)" style="width: 100%;height: 100%;"><?php echo "$psh"; ?></textarea>
             </div>
             </div>
         </div>
@@ -144,7 +144,7 @@ if ($row=mysqli_fetch_array($result)) {
                 <h6 class="m-0 font-weight-bold text-primary">Master Problem List</h6>
             </div>
             <div class="card-body dash-card">
-                <p><?php echo $mpl; ?></p>
+                <textarea id="mpl" onblur="saveData(this)" style="width: 100%;height: 100%;"><?php echo "$mpl"; ?></textarea>
             </div>
             </div>
         </div>
@@ -155,7 +155,7 @@ if ($row=mysqli_fetch_array($result)) {
                 <h6 class="m-0 font-weight-bold text-primary">Known Allergies List</h6>
             </div>
             <div class="card-body dash-card">
-                <p><?php echo $kal; ?></p>
+                <textarea id="kal" onblur="saveData(this)" style="width: 100%;height: 100%;"><?php echo "$kal"; ?></textarea>
             </div>
             </div>
         </div>
@@ -166,7 +166,7 @@ if ($row=mysqli_fetch_array($result)) {
                 <h6 class="m-0 font-weight-bold text-primary">Social History</h6>
             </div>
             <div class="card-body dash-card">
-                <p><?php echo $sh; ?></p>
+                <textarea id="sh" onblur="saveData(this)" style="width: 100%;height: 100%;"><?php echo "$sh"; ?></textarea>
             </div>
         </div>
         </div>
@@ -177,7 +177,7 @@ if ($row=mysqli_fetch_array($result)) {
                 <h6 class="m-0 font-weight-bold text-primary">Health Maintanance</h6>
             </div>
             <div class="card-body dash-card">
-                <p><?php echo $hm; ?></p>
+                <textarea id="hm" onblur="saveData(this)" style="width: 100%;height: 100%;"><?php echo "$hm"; ?></textarea>
             </div>
             </div>
         </div>
@@ -233,3 +233,15 @@ if ($row=mysqli_fetch_array($result)) {
 
 
 <?php require("footer.php")?>
+<script type="text/javascript">
+    function saveData(obj) {
+        var id = $(obj).attr("id");
+        var newData = $(obj).val();
+        var username = "<?php echo $username ?>";
+        $.ajax({
+            url: "saveData.php",
+            data: {"id":id,"newData":newData,"username":username},
+            method:"POST",
+        });
+    }
+</script>

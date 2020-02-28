@@ -49,22 +49,11 @@ if (isset($_SESSION['cusername'])) {
           <i class="fas fa-fw fa-user"></i>
           <span>Personal Info</span></a>
       </li>
-     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-sticky-note"></i>
-          <span>Prescription</span>
+      <li class="nav-item">
+        <a class="nav-link" href="prescription.php">
+          <i class="fas fa-fw fa-info"></i>
+          <span>Prescriptions</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header"></h6>
-            <a class="collapse-item" href="symptoms.php">Symptoms</a>
-            <a class="collapse-item" href="disease.php">disease diagnosis</a>
-            <a class="collapse-item" href="medication.php">Medication</a>
-            <a class="collapse-item" href="report.php">Report</a>
-            <a class="collapse-item" href="surgery.php">surgery</a>
-            <a class="collapse-item" href="allergy.php">Allergy</a>    
-          </div>
-        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="reports.php">

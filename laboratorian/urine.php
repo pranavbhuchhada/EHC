@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +20,7 @@
   <link href="css/mycustom.css" rel="stylesheet">
 
 </head>
+<?php require("../config/connection.php")?>
 <?php require("header.php")?>
 <div class="container-fluid">
   <div class="card-body">
