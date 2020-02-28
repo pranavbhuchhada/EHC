@@ -1,1 +1,5 @@
-<?php header("Location: dashboard.php") ?>
+<?php 
+session_start();
+header("Location: dashboard.php"); 
+exit;
+?>

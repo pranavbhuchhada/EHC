@@ -20,8 +20,8 @@
   <link href="css/mycustom.css" rel="stylesheet">
 
 </head>
-<?php require("header.php")?>
 <?php require("../config/connection.php")?>
+<?php require("header.php")?>
 <?php 
 $username = $_SESSION['username'];
 $result = mysqli_query($conn,"SELECT * FROM `userinfo` WHERE `username` = '".$username."'");
@@ -56,6 +56,7 @@ if ($row=mysqli_fetch_array($result)) {
     exit()  ;
 }
 ?>
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-1">

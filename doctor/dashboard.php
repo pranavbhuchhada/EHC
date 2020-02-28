@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +21,55 @@
   <link href="css/mycustom.css" rel="stylesheet">
 
 </head>
-
+<?php require("../config/connection.php")?>
 <?php require("header.php")?>
+<?php 
+if (isset($_SESSION['cusername'])) {
+  $username = $_SESSION['cusername'];
+}else{
+  $username = $_SESSION['username'];
+}
+$result = mysqli_query($conn,"SELECT * FROM `userinfo` WHERE `username` = '".$username."'");
+if ($row=mysqli_fetch_array($result)) {
+  $fname = $row[0];
+  $mname = $row[1];
+  $lname = $row[2];
+  $DOB = $row[3];
+  $mstatus = $row[4];
+  $sex = $row[5];
+  $bg = $row[6];
+  $mnum = $row[7];
+  $enum = $row[10];
+  $add = $row[11].",".$row[12].",".$row[13].",".$row[14];
+  $result = mysqli_query($conn,"SELECT `fname`,`lname`,`mnum` FROM `userinfo` WHERE `username` = '".$row[21]."'");
+  $row = mysqli_fetch_array($result);
+  $fdn = $row[0]." ".$row[1];
+  $fdnum = $row[2];
+}else{?>
+<script type="text/javascript">
+  window.location.href = "../index.php";
+</script>
+<?php 
+exit();
+}
+$result = mysqli_query($conn,"SELECT * FROM `dashboard` WHERE `username` = '".$username."'");
+if ($row=mysqli_fetch_array($result)) {
+    $pmh = $row[1];
+    $fh = $row[2];
+    $psh = $row[3];
+    $mpl = $row[4];
+    $kal = $row[5];
+    $sh = $row[6];
+    $hm = $row[7];
+}else{
+    ?>
+    <script type="text/javascript">
+        window.location.href = "../index.php";
+    </script>
+    <?php 
+    exit()  ;
+}
+?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -36,22 +84,21 @@
             <!-- Client info -->
             <div class="card shadow mb-4 dash">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Client Name</h6>
+                <h6 class="m-0 font-weight-bold text-primary"><?php echo "$fname $mname $lname"; ?></h6>
             </div>
             <div class="card-body row">
                 <div class="text-center col-lg-6">
-                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="https://media.istockphoto.com/vectors/user-icon-white-silhouette-on-blue-round-background-vector-id1003393752?k=6&m=1003393752&s=170667a&w=0&h=tHxs8MigTmRinLWCbU75QmSdVEZg1-2wZeH4tiPP-LQ=" alt="Client Image">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="../user_pp/<?php echo $username.'.jpg' ?>" alt="Client Image">
             </div>
                 <div class="col-lg-6">
-                <p>DOB : 11 - 09 - 1999 </p>
-                <p>Age : 26 </p>
-                <p>Sex : Twice a day. </p>
-                <p>Blood Group : A+ </p>
-                <p>Contact : +91 9876543210 </p>
-                <p>Emergency Contact : +91 9876543210 </p>
-                <p>Address :  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <p>DOB : <?php echo "$DOB"; ?> </p>
+                <p>Age : <?php echo date_diff(date_create($DOB), date_create('today'))->y; ?> </p>
+                <p>Sex : <?php echo "$sex"; ?> </p>
+                <p>Blood Group : <?php echo "$bg"; ?> </p>
+                <p>Contact : <?php echo "$mnum"; ?> </p>
+                <p>Emergency Contact : <?php echo "$enum"; ?> </p>
+                <p>Address : <?php echo "$add"; ?></p>
                 </div>
-                <!-- <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a> -->
             </div>
             </div>
         </div>
@@ -64,11 +111,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Past medical History</h6>
                 </div>
                 <div class="card-body dash-card">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                    <p><?php echo "$pmh"; ?></p>
                 </div>
             </div>
         </div>
@@ -79,7 +122,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Family History</h6>
             </div>
             <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <p><?php echo $fh; ?></p>
             </div>
             </div>
         </div>
@@ -90,7 +133,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Past surgical History</h6>
             </div>
             <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <p><?php echo $psh; ?></p>
             </div>
             </div>
         </div>
@@ -101,7 +144,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Master Problem List</h6>
             </div>
             <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <p><?php echo $mpl; ?></p>
             </div>
             </div>
         </div>
@@ -112,18 +155,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Known Allergies List</h6>
             </div>
             <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <!-- Master Medication List History -->
-            <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Known Allergies List</h6>
-            </div>
-            <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <p><?php echo $kal; ?></p>
             </div>
             </div>
         </div>
@@ -134,7 +166,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Social History</h6>
             </div>
             <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <p><?php echo $sh; ?></p>
             </div>
         </div>
         </div>
@@ -145,7 +177,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Health Maintanance</h6>
             </div>
             <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <p><?php echo $hm; ?></p>
             </div>
             </div>
         </div>
@@ -156,7 +188,29 @@
                 <h6 class="m-0 font-weight-bold text-primary">Current Medication List</h6>
             </div>
             <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Medication</th>
+                <th>Start Date</th>
+                <th>Remaining Days</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
+            $result=mysqli_query($conn, "SELECT `medname`,`date`,`duration` FROM `medication` WHERE `username`= '".$username."' AND `status` = 1");
+            while($row=mysqli_fetch_array($result)){
+                  ?>
+                <tr>
+                  <td><?php echo $row[0]; ?></td>
+                  <td><?php echo $row[1]; ?></td>
+                  <td><?php echo $row[2] - date_diff(date_create($row[1]), date_create('today'))->d; ?></td>
+                </tr>
+                <?php
+              } 
+            ?>
+            </tbody>
+          </table>
             </div>
             </div>
         </div>
@@ -167,7 +221,8 @@
                     <h6 class="m-0 font-weight-bold text-primary">Family Doctor Contact</h6>
                 </div>
                 <div class="card-body dash-card">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
+                    <p>Name : <?php echo $fdn; ?></p>
+                    <p>Mobile Number : <?php echo $fdnum; ?></p>
                 </div>
             </div>
         </div>

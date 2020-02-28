@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>E - healthcard - Time Line</title>
+  <title>E - healthcard - Reports</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,11 +21,6 @@
 </head>
 <?php require("header.php")?>
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-1">
-        <h1 class="h3 mb-0 text-gray-800">Time Line</h1>
-        <h1 class="h3 ml-auto text-gray-800">UID - 9385 8771 7682</h1>
-    </div>
 </div>
 <?php require("footer.php")?>
 <script>

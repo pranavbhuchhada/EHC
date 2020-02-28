@@ -28,19 +28,9 @@
           <span>Personal Info</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="time-line.php">
+        <a class="nav-link" href="prescription-demanded.php">
           <i class="fas fa-fw fa-file" ></i>
-          <span>Time-Line</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reports.php">
-          <i class="fas fa-fw fa-sticky-note "></i>
-          <span>Reports</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="insurance.php">
-          <i class="fas fa-fw fa-medkit"></i>
-          <span>Insurance</span></a>
+          <span>Prescription Demanded</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider">

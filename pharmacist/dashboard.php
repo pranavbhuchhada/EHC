@@ -45,7 +45,7 @@
                 <div class="col-lg-6">
                 <p>DOB : 11 - 09 - 1999 </p>
                 <p>Age : 26 </p>
-                <p>Sex : Twice a day. </p>
+                <p>Sex : Male </p>
                 <p>Blood Group : A+ </p>
                 <p>Contact : +91 9876543210 </p>
                 <p>Emergency Contact : +91 9876543210 </p>
@@ -61,7 +61,7 @@
             <!-- Past medical History -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Past medical History</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Pending Prescription</h6>
                 </div>
                 <div class="card-body dash-card">
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
@@ -76,40 +76,7 @@
             <!-- Family History -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Family History</h6>
-            </div>
-            <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <!--Past surgical History -->
-            <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Past surgical History</h6>
-            </div>
-            <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <!-- Master Problem List History -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Master Problem List</h6>
-            </div>
-            <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <!-- Known Allergies List History -->
-            <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Known Allergies List</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Past medical History</h6>
             </div>
             <div class="card-body dash-card">
                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
@@ -120,29 +87,7 @@
             <!-- Master Medication List History -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Known Allergies List</h6>
-            </div>
-            <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <!-- Socail History -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Social History</h6>
-            </div>
-            <div class="card-body dash-card">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-            </div>
-        </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <!-- Health Maintanance -->
-            <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Health Maintanance</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Master Medication List</h6>
             </div>
             <div class="card-body dash-card">
                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
@@ -158,17 +103,6 @@
             <div class="card-body dash-card">
                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
             </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <!-- Family Doctor Contact -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Family Doctor Contact</h6>
-                </div>
-                <div class="card-body dash-card">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</p>
-                </div>
             </div>
         </div>
     </div>

@@ -102,7 +102,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Sex</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Twice a day.</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">Male</div>
                 </div>
             </div>
             </div>

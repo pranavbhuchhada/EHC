@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,12 +20,84 @@
   <link href="css/mycustom.css" rel="stylesheet">
 
 </head>
+<?php require("../config/connection.php")?>
 <?php require("header.php")?>
+<?php 
+if (isset($_SESSION['cusername'])) {
+    $username = $_SESSION['cusername'];
+    $result = mysqli_query($conn,"SELECT * FROM `userinfo` WHERE `username` = '".$username."'");
+    if ($row=mysqli_fetch_array($result)) {
+        $fname = $row[0];
+        $mname = $row[1];
+        $lname = $row[2];
+        $DOB = $row[3];
+        $mstatus = $row[4];
+        $sex = $row[5];
+        $bg = $row[6];
+        $mnum = $row[7];
+        $rnum = $row[8];
+        $wnum = $row[9];
+        $enum = $row[10];
+        $add = $row[11];
+        $city = $row[12];
+        $state = $row[13];
+        $country = $row[14];
+        $wstatus = $row[15];
+        $occupation = $row[16];
+        $rdate = $row[17];
+        $pin = $row[19];
+        $UID = $row[20];
+    }else{
+        ?>
+        <script type="text/javascript">
+            alert("ERROR 2");
+            window.location.href = "../index.php";
+        </script>
+        <?php 
+        exit()  ;
+    }
+}else{
+    $username = $_SESSION['username'];
+    $result = mysqli_query($conn,"SELECT * FROM `userinfo` WHERE `username` = '".$username."'");
+    if ($row=mysqli_fetch_array($result)) {
+        $fname = $row[0];
+        $mname = $row[1];
+        $lname = $row[2];
+        $DOB = $row[3];
+        $mstatus = $row[4];
+        $sex = $row[5];
+        $bg = $row[6];
+        $mnum = $row[7];
+        $rnum = $row[8];
+        $wnum = $row[9];
+        $enum = $row[10];
+        $add = $row[11];
+        $city = $row[12];
+        $state = $row[13];
+        $country = $row[14];
+        $wstatus = $row[15];
+        $occupation = $row[16];
+        $rdate = $row[17];
+        $pin = $row[19];
+        $UID = $row[20];
+    }else{
+        ?>
+        <script type="text/javascript">
+            alert("ERROR 2");
+            window.location.href = "../index.php";
+        </script>
+        <?php 
+        exit()  ;
+    }
+}
+
+?>
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-1">
         <h1 class="h3 mb-0 text-gray-800">Personal Info</h1>
-        <h1 class="h3 ml-auto text-gray-800">UID - 9385 8771 7682</h1>
+        <h1 class="h3 ml-auto text-gray-800">UID - <?php echo "$UID"; ?></h1>
     </div>
 
     <div class="row">
@@ -34,7 +107,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">First Name</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Yash</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$fname"; ?></div>
                 </div>
             </div>
             </div>
@@ -45,7 +118,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Middle Name</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Raj</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$mname"; ?></div>
                 </div>
             </div>
             </div>
@@ -56,7 +129,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Last Name</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Patel</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$lname"; ?></div>
                 </div>
             </div>
             </div>
@@ -69,7 +142,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Date Of Birth</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">11 - 09 - 1999</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$DOB"; ?></div>
                 </div>
             </div>
             </div>
@@ -80,7 +153,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Age</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">20 Years</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo date_diff(date_create($DOB), date_create('today'))->y; ?> Years</div>
                 </div>
             </div>
             </div>
@@ -91,7 +164,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Maratial Status</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Single</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$mstatus"; ?></div>
                 </div>
             </div>
             </div>
@@ -102,7 +175,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Sex</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Twice a day.</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$sex"; ?></div>
                 </div>
             </div>
             </div>
@@ -115,7 +188,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mobile Number</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">+91 9876543210</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$mnum"; ?></div>
                 </div>
             </div>
             </div>
@@ -126,7 +199,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Residential Number</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">+91 9876543210</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$rnum"; ?></div>
                 </div>
             </div>
             </div>
@@ -137,7 +210,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Work Contact Number</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">+91 9876543210</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$wnum"; ?></div>
                 </div>
             </div>
             </div>
@@ -148,7 +221,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Emergency Contact</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">+91 9876543210</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$enum"; ?></div>
                 </div>
             </div>
             </div>
@@ -161,7 +234,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Address</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id est vitae felis tincidunt pellentesque vitae sed diam. Donec auctor ante nec nibh gravida vulputate aliquam ac quam.</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$add"; ?></div>
                 </div>
             </div>
             </div>
@@ -175,7 +248,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">City</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Jamnagar</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$city"; ?></div>
                 </div>
             </div>
             </div>
@@ -186,7 +259,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">State</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Gujarat</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$state"; ?></div>
                 </div>
             </div>
             </div>
@@ -197,7 +270,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pincode</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">361210</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$pin"; ?></div>
                 </div>
             </div>
             </div>
@@ -208,7 +281,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Country</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">INDIA.</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$country"; ?></div>
                 </div>
             </div>
             </div>
@@ -221,7 +294,7 @@
                 <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Work Status</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Retired</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$wstatus"; ?></div>
                 </div>
             </div>
             </div>
@@ -232,7 +305,7 @@
                 <div class="card-body">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Occupation</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Business</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$occupation"; ?></div>
                     </div>
                 </div>
             </div>
@@ -243,7 +316,7 @@
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Registration Date</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">21 - 02 - 2020</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "$rdate"; ?></div>
                 </div>
             </div>
             </div>

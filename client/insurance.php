@@ -20,13 +20,14 @@
   <link href="css/mycustom.css" rel="stylesheet">
 
 </head>
+<?php require("../config/connection.php")?>
 <?php require("header.php")?>
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-1">
         <h1 class="h3 mb-0 text-gray-800">Insurance</h1>
-        <h1 class="h3 ml-auto text-gray-800">UID - 9385 8771 7682</h1>
     </div>
+    <h1>Comming Soon..</h1>
 </div>
 <?php require("footer.php")?>
 <script>
